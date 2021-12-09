@@ -15,7 +15,7 @@ public class testStudent {
     public void selectStudent (){
         SqlSession session = mybatisUntil.getSqlSession();
         studentDao dao = session.getMapper(studentDao.class);
-        Student student = dao.selectStudentById(1004);
+        Student student = dao.selectStudentById(1001);
         System.out.println("查询到的同学为: " + student);
         session.close();
     }
