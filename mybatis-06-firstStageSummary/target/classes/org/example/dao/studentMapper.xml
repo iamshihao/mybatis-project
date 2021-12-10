@@ -19,4 +19,12 @@
     <select id="selectStudentByObject" resultType="org.example.entity.Student">
         select id, name, email, age from student where name = #{name} or id = #{id}
     </select>
+
+    <update id="updateStudent">
+        update student set id = #{studentId} where name = #{studentName}
+    </update>
+
+    <delete id="deleteStudent">
+        delete from student where id = #{studentId}
+    </delete>
 </mapper>
