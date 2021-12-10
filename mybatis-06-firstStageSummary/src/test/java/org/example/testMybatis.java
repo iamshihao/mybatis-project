@@ -29,4 +29,22 @@ public class testMybatis {
         System.out.println("新增" + num + "名同学");
         sqlSession.close();
     }
+    @Test
+    public void selectStudentByParam(){
+        SqlSession sqlSession = mybatisUntil.getSqlsession();
+        studentDao dao = sqlSession.getMapper(studentDao.class);
+        List<Student> students = dao.selectStudentByParam("刘备", 1002);
+        students.forEach(student -> System.out.println("查询到符合条件的同学有： " + " " + student));
+        sqlSession.close();
+    }
+    @Test
+    public void selectStudentByObject(){
+        SqlSession sqlSession = mybatisUntil.getSqlsession();
+        studentDao dao = sqlSession.getMapper(studentDao.class);
+        Student student = new Student();
+        student.setName("关羽");
+        student.setId(1003);
+        List<Student> students = dao.selectStudentByObject(student);
+        students.forEach(everyStudent -> System.out.println("查询到符合条件的同学有： " + " " + everyStudent));
+    }
 }

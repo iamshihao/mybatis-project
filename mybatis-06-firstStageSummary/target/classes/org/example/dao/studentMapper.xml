@@ -11,4 +11,12 @@
     <insert id="insertStudent">
         insert into student values (#{id}, #{name}, #{email}, #{age})
     </insert>
+
+    <select id="selectStudentByParam" resultType="org.example.entity.Student">
+        select id, name, email, age from student where name = #{studentName} or id = #{studentId}
+    </select>
+
+    <select id="selectStudentByObject" resultType="org.example.entity.Student">
+        select id, name, email, age from student where name = #{name} or id = #{id}
+    </select>
 </mapper>
