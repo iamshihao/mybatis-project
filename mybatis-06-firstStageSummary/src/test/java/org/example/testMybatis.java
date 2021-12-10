@@ -46,6 +46,7 @@ public class testMybatis {
         student.setId(1003);
         List<Student> students = dao.selectStudentByObject(student);
         students.forEach(everyStudent -> System.out.println("查询到符合条件的同学有： " + " " + everyStudent));
+        sqlSession.close();
     }
     @Test
     public void updateStudent(){

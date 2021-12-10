@@ -16,7 +16,7 @@
         select id, name, email, age from student where name = #{studentName} or id = #{studentId}
     </select>
 
-    <select id="selectStudentByObject" resultType="org.example.entity.Student">
+    <select id="selectStudentByObject" parameterType="org.example.entity.Student" resultType="org.example.entity.Student">
         select id, name, email, age from student where name = #{name} or id = #{id}
     </select>
 
