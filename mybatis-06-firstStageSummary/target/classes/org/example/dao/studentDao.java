@@ -13,4 +13,6 @@ public interface studentDao {
     List<Student> selectStudentByParam(@Param("studentName") String name, @Param("studentId") Integer id);
 
     List<Student> selectStudentByObject(Student student);
+
+    int updateStudent(@Param("studentName") String name, Student student);
 }

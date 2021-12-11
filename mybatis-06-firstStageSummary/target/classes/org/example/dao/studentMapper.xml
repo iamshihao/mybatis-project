@@ -19,4 +19,8 @@
     <select id="selectStudentByObject" resultType="org.example.entity.Student">
         select id, name, email, age from student where name = #{name} or id = #{id}
     </select>
+
+    <update id="updateStudent" parameterType="org.example.entity.Student">
+        update student set id = #{id} where name = #{studentName}
+    </update>
 </mapper>
