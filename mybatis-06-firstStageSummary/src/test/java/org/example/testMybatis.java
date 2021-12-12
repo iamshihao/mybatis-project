@@ -73,4 +73,12 @@ public class testMybatis {
         System.out.println("map===" + map);
         sqlSession.close();
     }
+    @Test
+    public void selectAllStudents(){
+        SqlSession sqlSession = mybatisUntil.getSqlsession();
+        studentDao dao = sqlSession.getMapper(studentDao.class);
+        List<Student> students = dao.selectAllStudents();
+        students.forEach(student -> System.out.println("学生：" + student));
+        sqlSession.close();
+    }
 }

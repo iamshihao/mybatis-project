@@ -31,4 +31,15 @@
     <select id="selectMapById" resultType="java.util.HashMap">
         select id, name, email, age from student where id = #{id}
     </select>
+
+    <resultMap id="studentMap" type="org.example.entity.Student">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="email" property="email"/>
+        <result column="age" property="age"/>
+    </resultMap>
+
+    <select id="selectAllStudents" resultMap="studentMap">
+        select id, name, email, age from student
+    </select>
 </mapper>

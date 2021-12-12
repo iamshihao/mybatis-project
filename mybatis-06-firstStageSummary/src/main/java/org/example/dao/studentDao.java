@@ -21,4 +21,6 @@ public interface studentDao {
 
     Map<Object,Object> selectMapById(int id);
 
+    List<Student> selectAllStudents();
+
 }
