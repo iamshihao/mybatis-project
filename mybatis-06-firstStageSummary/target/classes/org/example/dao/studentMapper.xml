@@ -27,4 +27,8 @@
     <delete id="deleteStudent">
         delete from student where id = #{studentId}
     </delete>
+
+    <select id="selectMapById" resultType="java.util.HashMap">
+        select id, name, email, age from student where id = #{id}
+    </select>
 </mapper>

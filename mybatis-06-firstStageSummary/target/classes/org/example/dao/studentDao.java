@@ -3,6 +3,7 @@ package org.example.dao;
 import org.apache.ibatis.annotations.Param;
 import org.example.entity.Student;
 import java.util.List;
+import java.util.Map;
 
 public interface studentDao {
 
@@ -17,4 +18,7 @@ public interface studentDao {
     int updateStudent(@Param("studentName") String name, @Param("studentId") int id);
 
     int deleteStudent(@Param("studentId") int id);
+
+    Map<Object,Object> selectMapById(int id);
+
 }

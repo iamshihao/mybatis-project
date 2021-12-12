@@ -6,6 +6,7 @@ import org.example.entity.Student;
 import org.example.untils.mybatisUntil;
 import org.junit.Test;
 import java.util.List;
+import java.util.Map;
 
 public class testMybatis {
     @Test
@@ -62,6 +63,14 @@ public class testMybatis {
         studentDao dao = sqlSession.getMapper(studentDao.class);
         int num = dao.deleteStudent(1005);
         System.out.println("已删除" + num + "条数据");
+        sqlSession.close();
+    }
+    @Test
+    public void selectMapById(){
+        SqlSession sqlSession = mybatisUntil.getSqlsession();
+        studentDao dao = sqlSession.getMapper(studentDao.class);
+        Map<Object,Object> map = dao.selectMapById(1003);
+        System.out.println("map===" + map);
         sqlSession.close();
     }
 }
