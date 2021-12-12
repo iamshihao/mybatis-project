@@ -57,4 +57,12 @@
     <select id="selectMystudentDiffColPorperty" resultType="org.example.entity.Mystudent">
         select id as myId, name as myName, email as myEmail, age as myAge from student
     </select>
+
+    <select id="selectStudentLikeOne" resultType="org.example.entity.Student">
+        select id, name, email, age from student where email like #{email}
+    </select>
+
+    <select id="selectStudentLikeTwo" resultType="org.example.entity.Student">
+        select id, name, email, age from student where name like "%" #{name} "%"
+    </select>
 </mapper>

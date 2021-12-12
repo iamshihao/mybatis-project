@@ -98,4 +98,22 @@ public class testMybatis {
         myStudents.forEach(student -> System.out.println("学生：" + student));
         sqlSession.close();
     }
+    @Test
+    public void selectStudentLikeOne(){
+        SqlSession sqlSession = mybatisUntil.getSqlsession();
+        studentDao dao = sqlSession.getMapper(studentDao.class);
+        String email = "%sanguo.com%";
+        List<Student> students = dao.selectStudentLikeOne(email);
+        students.forEach(student -> System.out.println("学生：" + student));
+        sqlSession.close();
+    }
+    @Test
+    public void selectStudentLikeTwo(){
+        SqlSession sqlSession = mybatisUntil.getSqlsession();
+        studentDao dao = sqlSession.getMapper(studentDao.class);
+        String name = "刘";
+        List<Student> students = dao.selectStudentLikeTwo(name);
+        students.forEach(student -> System.out.println("学生：" + student));
+        sqlSession.close();
+    }
 }

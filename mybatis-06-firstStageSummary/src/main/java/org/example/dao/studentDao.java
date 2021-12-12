@@ -28,4 +28,8 @@ public interface studentDao {
 
     List<Mystudent> selectMystudentDiffColPorperty();
 
+    List<Student> selectStudentLikeOne(String email);
+
+    List<Student> selectStudentLikeTwo(String name);
+
 }
