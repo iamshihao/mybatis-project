@@ -17,5 +17,4 @@ public interface studentDao {
     int updateStudent(@Param("studentName") String name, @Param("studentId") int id);
 
     int deleteStudent(@Param("studentId") int id);
-
 }

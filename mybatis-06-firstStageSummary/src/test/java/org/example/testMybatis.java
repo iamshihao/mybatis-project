@@ -46,5 +46,22 @@ public class testMybatis {
         student.setId(1003);
         List<Student> students = dao.selectStudentByObject(student);
         students.forEach(everyStudent -> System.out.println("查询到符合条件的同学有： " + " " + everyStudent));
+        sqlSession.close();
+    }
+    @Test
+    public void updateStudent(){
+        SqlSession sqlSession = mybatisUntil.getSqlsession();
+        studentDao dao = sqlSession.getMapper(studentDao.class);
+        int num = dao.updateStudent("张飞",1003);
+        System.out.println("已更新" + num + "条数据");
+        sqlSession.close();
+    }
+    @Test
+    public void deleteStudent(){
+        SqlSession sqlSession = mybatisUntil.getSqlsession();
+        studentDao dao = sqlSession.getMapper(studentDao.class);
+        int num = dao.deleteStudent(1005);
+        System.out.println("已删除" + num + "条数据");
+        sqlSession.close();
     }
 }
