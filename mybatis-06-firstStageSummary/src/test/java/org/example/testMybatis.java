@@ -2,6 +2,7 @@ package org.example;
 
 import org.apache.ibatis.session.SqlSession;
 import org.example.dao.studentDao;
+import org.example.entity.Mystudent;
 import org.example.entity.Student;
 import org.example.untils.mybatisUntil;
 import org.junit.Test;
@@ -79,6 +80,22 @@ public class testMybatis {
         studentDao dao = sqlSession.getMapper(studentDao.class);
         List<Student> students = dao.selectAllStudents();
         students.forEach(student -> System.out.println("学生：" + student));
+        sqlSession.close();
+    }
+    @Test
+    public void selectMyStudent(){
+        SqlSession sqlSession = mybatisUntil.getSqlsession();
+        studentDao dao = sqlSession.getMapper(studentDao.class);
+        List<Mystudent> myStudents = dao.selectMystudent();
+        myStudents.forEach(student -> System.out.println("学生：" + student));
+        sqlSession.close();
+    }
+    @Test
+    public void selectMystudentDiffColPorperty(){
+        SqlSession sqlSession = mybatisUntil.getSqlsession();
+        studentDao dao = sqlSession.getMapper(studentDao.class);
+        List<Mystudent> myStudents = dao.selectMystudent();
+        myStudents.forEach(student -> System.out.println("学生：" + student));
         sqlSession.close();
     }
 }

@@ -42,4 +42,19 @@
     <select id="selectAllStudents" resultMap="studentMap">
         select id, name, email, age from student
     </select>
+
+    <resultMap id="MyStudentMap" type="org.example.entity.Mystudent">
+        <id property="myId" column="id"/>
+        <result property="myName" column="name"/>
+        <result property="myEmail" column="email"/>
+        <result property="myAge" column="age"/>
+    </resultMap>
+
+    <select id="selectMystudent" resultMap="MyStudentMap">
+        select id, name, email, age from student
+    </select>
+
+    <select id="selectMystudentDiffColPorperty" resultType="org.example.entity.Mystudent">
+        select id as myId, name as myName, email as myEmail, age as myAge from student
+    </select>
 </mapper>
