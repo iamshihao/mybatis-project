@@ -58,7 +58,7 @@ public class testMybatis {
         stu5.setId(1005);
         stuList.add(stu5);
         List<Student> students = dao.selectForeachStudent(stuList);
-        students.forEach(student -> System.out.println("foreachOne==" + student));
+        students.forEach(student -> System.out.println("foreachStudent==" + student));
         sqlSession.close();
     }
 }
