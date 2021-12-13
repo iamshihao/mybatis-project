@@ -33,11 +33,14 @@
         </foreach>
     </select>
     <select id="selectForeachStudent" resultType="org.example.entity.Student">
-        select * from student where id
-            in (
-        <foreach collection="list" item="student" separator=",">
-            #{student.id}
-        </foreach>
-                )
+        select * from student
+        <where>
+            id in
+            <if test=" list != null and list !='' ">
+                <foreach collection="list" item="student" open="(" close=")" separator=",">
+                    #{student.id}
+                </foreach>
+            </if>
+        </where>
     </select>
 </mapper>
