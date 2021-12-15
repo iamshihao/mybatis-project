@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.example.dao.StudentDao">
+    <select id="selectStudents" resultType="org.example.entity.Student">
+        select * from student
+    </select>
+    <insert id="insertStudent">
+        insert into student values (#{id}, #{name}, #{email}, #{age})
+    </insert>
+    <select id="selectStudentByParam" resultType="org.example.entity.Student">
+        select id, name, email, age from student where id = #{studentId} or name = #{studentName}
+    </select>
+    <select id="selectStudentByObject" parameterType="org.example.entity.Student" resultType="org.example.entity.Student">
+        select id, name, email, age from student where id = #{id} or name = #{name}
+    </select>
+    <update id="updateStudent" parameterType="org.example.entity.Student">
+        update student set email = #{email} where id = #{id}
+    </update>
+    <select id="selectStudentIf" resultType="org.example.entity.Student">
+        select id, name, email, age from student
+        <where>
+            <if test=" studentId != null and studentId != ''">
+                id > #{studentId}
+            </if>
+        </where>
+    </select>
+    <select id="selectStudentForeach" parameterType="java.util.List" resultType="org.example.entity.Student">
+        select id, name, email, age from student
+        <where>
+            <if test=" list != null and list != ''">
+                id in
+                <foreach collection="list" item="studentId" open="(" close=")" separator=",">
+                    #{studentId}
+                </foreach>
+            </if>
+        </where>
+    </select>
+    <select id="selectStudentForeachStudents" parameterType="org.example.entity.Student" resultType="org.example.entity.Student">
+        select id, name, email, age from student
+        <where>
+            <if test="list != null or list != ''">
+                id in
+                <foreach collection="list" item="student" open="(" close=")" separator=",">
+                    #{student.id}
+                </foreach>
+            </if>
+        </where>
+    </select>
+    <resultMap id="StudentMap" type="org.example.pojo.MyStudent">
+        <id column="id" property="myId"/>
+        <result column="name" property="myName"/>
+        <result column="email" property="myEmail"/>
+        <result column="age" property="myAge"/>
+    </resultMap>
+    <select id="selectStudentResultMap" resultMap="StudentMap">
+        select id, name, email, age from student
+    </select>
+</mapper>
